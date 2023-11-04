@@ -10,7 +10,7 @@ const dotenv = require("dotenv"),
 dotenv.config();
 
 const client = new Client({
-  connectionString: "postgres://postgres:kuken@localhost/postgres",
+  connectionString: process.env.PGURI
 });
 
 client.connect();
