@@ -1,17 +1,30 @@
-const express = require('express'),
-  path = require('path')
+const express = require("express"),
+  path = require("path");
 
-const app = express()
-  port = process.env.PORT || 3000
+const app = express();
+port = process.env.PORT || 3000;
 
-app.get('/api', (_request, response) => {
-  response.send({ hello: 'JSU22' })
-})
+const dotenv = require("dotenv"),
+  { Client } = require("pg");
 
-app.use(express.static(path.join(path.resolve(), 'public')))
+dotenv.config();
 
+const client = new Client({
+  connectionString: "postgres://postgres:kuken@localhost/postgres",
+});
+
+client.connect();
+
+app.get("/api", async (_request, response) => {
+  const { rows } = await client.query("SELECT * FROM cities WHERE name = $1", [
+    "Stockholm",
+  ]);
+
+  response.send(rows);
+});
+
+app.use(express.static(path.join(path.resolve(), "public")));
 
 app.listen(port, () => {
-  console.log('Redo på http://localhost:${port}/')
-})
-
+  console.log(`Server is running on http://localhost:${port}/`);
+});
