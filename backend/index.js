@@ -10,16 +10,13 @@ const dotenv = require("dotenv"),
 dotenv.config();
 
 const client = new Client({
-  connectionString: process.env.PGURI
+  connectionString: process.env.PGURI,
 });
 
 client.connect();
 
 app.get("/api", async (_request, response) => {
-  const { rows } = await client.query("SELECT * FROM cities WHERE name = $1", [
-    "Stockholm",
-  ]);
-
+  const { rows } = await client.query("SELECT name, population FROM cities");
   response.send(rows);
 });
 
