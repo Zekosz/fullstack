@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 function App() {
-    const [count, setCount] = useState(0);
+  
     const [queryResult, setQueryResult] = useState([]);
 
     useEffect(() => {
@@ -14,28 +14,19 @@ function App() {
 
     return (
         <>
-            <div className="header">
-                <h1>Vite + React</h1>
-            </div>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    Click to Increment Count
-                </button>
-                <p>
-                    Edit <code>src/App.jsx</code> and save to test HMR
-                </p>
-            </div>
-
             <div className="query-result">
-                <h2>Cities from Database:</h2>
-                <ul className="city-list">
+                <h2>Players from Database:</h2>
+                <ul className="players-list">
                     {queryResult.map((item, index) => (
-                        <li key={index} className="city-item">
-                            <div className="city-info">
+                        <li key={index} className="players-item">
+                            <div className="players-info">
                                 <strong>Name:</strong> {item.name}
                             </div>
-                            <div className="city-info">
-                                <strong>Population:</strong> {item.population}
+                            <div className="players-info">
+                                <strong>Club:</strong> {item.club}
+                            </div>
+                            <div className="players-info">
+                                <strong>Age:</strong> {item.age}
                             </div>
                         </li>
                     ))}

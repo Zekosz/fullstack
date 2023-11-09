@@ -16,7 +16,7 @@ const client = new Client({
 client.connect();
 
 app.get("/api", async (_request, response) => {
-  const { rows } = await client.query("SELECT name, population FROM cities");
+  const { rows } = await client.query("SELECT name, club, age FROM players");
   response.send(rows);
 });
 
