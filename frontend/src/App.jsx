@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 
 function App() {
-  
     const [queryResult, setQueryResult] = useState([]);
 
     useEffect(() => {
-        fetch('/api')
+        fetch('http://localhost:3000/api')
             .then((response) => response.json())
             .then((result) => {
                 setQueryResult(result);
             });
     }, []);
+    
 
     return (
         <>

@@ -1,8 +1,9 @@
 const express = require("express"),
-  path = require("path");
+  path = require("path"),
+  cors = require("cors");
 
 const app = express();
-port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 const dotenv = require("dotenv"),
   { Client } = require("pg");
