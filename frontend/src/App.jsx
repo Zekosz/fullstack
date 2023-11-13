@@ -4,7 +4,7 @@ function App() {
     const [queryResult, setQueryResult] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api')
+        fetch('http://108.143.27.225:3000/api')
             .then((response) => response.json())
             .then((result) => {
                 setQueryResult(result);
