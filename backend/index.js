@@ -24,9 +24,16 @@ app.use(
   })
 );
 
-app.get("/api", async (_request, response) => {
-  const { rows } = await client.query("SELECT name, club, age FROM players");
-  response.send(rows);
+app.get("/api", async (request, response) => {
+  try {
+    console.log(`Incoming GET request`);
+
+    const { rows } = await client.query("SELECT name, club, age FROM players");
+    response.send(rows);
+  } catch (error) {
+    console.error("Error:", error);
+    response.status(500).send("Internal Server Error");
+  }
 });
 
 app.use(express.static(path.join(path.resolve(), "public")));
