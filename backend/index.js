@@ -18,7 +18,7 @@ client.connect();
 
 app.use(
   cors({
-    origin: "http://108.143.27.225:3000",
+    origin: "http://108.143.27.225:8080",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
